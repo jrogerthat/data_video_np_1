@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Bar Chart</title>
+</head>
+
+<body>
+
+<div id= "VLAT_bar_chart_timer"> </div>
+<div id="bar_chart">
+  <div class="flex_vlat">
+    <div>
+      <img src = "modules/img/VLAT/bar_chart.png" alt="bar_chart" width="700px"/>
+    </div>
+
+
+  <div id="bar_chart_question"><strong>What is the average internet speed in Japan?</strong>
+    <div id="bc_answers">
+          <!-- answer = 6 -->
+      <ul>
+        <li><input type="radio" id="a1" name="bar_chart_question" value="42.30 Mbps">42.30 Mbps</li>
+        <li><input type="radio" id="a2" name="bar_chart_question" value="40.51 Mbps">40.51 Mbps</li>
+        <li><input type="radio" id="a3" name="bar_chart_question" value="35.25 Mbps">35.25 Mbps</li>
+        <li><input type="radio" id="a4" name="bar_chart_question" value="16.16 Mbps">16.16 Mbps</li>
+        <li><input type="radio" id="a5" name="bar_chart_question" value="Skip">Skip</li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<style>
+ 
+</style>
+
+<script> 
+(function() {
+  var data = {};
+  var answers = {};
+  
+
+  init();
+  
+  function init(){
+
+	data.bar_chart_question = null;
+
+    //start timer
+  	experimentr.attachTimer('#VLAT_bar_chart_timer', 25, function(){
+  	  if(experimentr.get_current() == 'modules/miniVLAT/bar_chart.html'){
+    		experimentr.endTimer('VLAT_bar_chart_timer');
+    		
+    		experimentr.addData(data);
+    		experimentr.next();
+    	}
+  	});
+
+	d3.selectAll('input')
+	.on('change', function() { data.bar_chart_question = this.value; });
+  	
+  	//overrides onNext from experimentr
+    d3.select('#next-button')
+      .on('click', function(){
+        experimentr.endTimer('VLAT_bar_chart_timer');
+        experimentr.addData(data);
+        experimentr.next();
+    });
+    
+    experimentr.startTimer('VLAT_bar_chart_timer');
+    experimentr.release();
+   
+  }
+}());
+</script>
+</body>
+</html>

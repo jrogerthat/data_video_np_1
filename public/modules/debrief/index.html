@@ -1,0 +1,56 @@
+<div id="debrief">
+<h2>Data Video Study</h2>
+
+<p class="placeholder">
+  The goal of this study is to better understand if data videos improve understanding and recall in data communication. 
+  The result of this study will help in the improvement of future visualization designs. <br><br>Thank you again for your participation!
+  </p>
+  
+  <p>
+  <!-- <strong>Please add a comment below and then click Submit to complete the experiment and get your post ID for Prolific. You must leave a comment to get your post ID.</strong>   -->
+  <strong>Please add a comment below and then click Submit to return to Prolific. You  must leave a comment to be redirected to the Prolific site and show you comleted the survey.</strong>  
+  </p>
+  
+  <textarea name="textarea" rows="10" cols="50" placeholder="Please leave any feedback here"></textarea>
+  <br>
+  <button id="submitComments" disabled="false" type="button">Submit</button>
+  <br>
+  <strong><div id="submitFeedback"></div></strong>
+  <h2 id="postID2"></h2>
+  
+  </div>
+  
+  <style>
+  </style>
+
+<script>
+(function() {
+
+  experimentr.clearNext(); 
+
+  var postId  = experimentr.postId
+    , data    = {};
+
+  d3.select("#postId").text(postId);
+
+  var comments = d3.select('#debrief').select('textarea')
+    .on('keypress', function() { d3.select('#submitComments').attr('disabled', null); })
+    .on('blur', function() { d3.select('#submitComments').attr('disabled', null); });
+
+  d3.select('#submitComments')
+    .on('click', function () { 
+      data.comments = comments.property('value'); 
+      validate(); 
+    });
+
+  function validate() {
+   if( data.comments ) {
+      experimentr.addData(data);
+      d3.select('#submitComments').attr('disabled', 'true');
+      window.location.href = "https://app.prolific.com/submissions/complete?cc=C1E0YAGI"
+      // d3.select('#submitFeedback').text('Please copy and paste the following code back on Mechanical Turk before closing this window:');
+      // d3.select('#postID2').text(postId); C1E0YAGI
+   }
+  }
+}());
+</script>

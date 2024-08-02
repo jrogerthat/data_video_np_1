@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Task 1 Questions</title>
+</head>
+
+<body>
+  <div id="task_1_questions_timer"></div>
+  <div id="task_1_questions">
+    <!-- <div class="chart-wrapper">
+      <object data="modules/task_1_crait/crait_vis.svg" width="auto" height="300"> </object>
+
+    </div> -->
+    <h5> <span id="status"></span> </h5>
+    <h3 id="task_1_questions_header">Please answer the questions from what you can recall about the visualization: </h3>
+    <br>
+    <div id="questions">
+      <div id="task1_q1">
+        <span class="question header">1. How is type of accomodation encoded in the visualization?</span>
+         <br>
+         <ul>
+          <li><input type="radio" name="t1_q1" value="line width">line width</li>
+          <li><input type="radio" name="t1_q1" value="circle radius">circle radius</li>
+          <li><input type="radio" name="t1_q1" value="color">color</li>
+          <li><input type="radio" name="t1_q1" value="slope">slope</li>
+          <li><input type="radio" name="t1_q1" value="I don't know">I don't know</li>
+         </ul>
+       </div>
+      <br>
+      <div id="task1_q2"><span class="question header">2. What does the central number "25k" most likely represent?</span>
+        <br>
+        <ul>    
+            <li> <input type="radio" name="t1_q2" value="A data point for one of the categories">A data point for one of the categories</li>
+            <li><input type="radio" name="t1_q2" value="Square feet used in the park.">Square feet used in the park.</li>
+            <li><input type="radio" name="t1_q2" value="Nights spent by visitors in the park">Nights spent by visitors in the park</li>
+            <li><input type="radio" name="t1_q2" value="People visiting the park">People visiting the park</li>
+            <li> <input type="radio" name="t1_q2" value="I don't know">I don't know</li>
+        </ul>
+      </div>
+      <br>
+      <div id="task1_q3">
+        <span class="question header">3. The chart most likely represents data collected over what time frame?</span>
+        <br>
+        <ul>
+            <li><input type="radio" name="t1_q3" value="A single month">A single month</li>
+            <li><input type="radio" name="t1_q3" value="A single year">A single year</li>
+            <li><input type="radio" name="t1_q3" value="A period of several years">A period of several years</li>
+            <li><input type="radio" name="t1_q3" value="An unspecified time frame">An unspecified time frame</li>
+            <li><input type="radio" name="t1_q3" value="I don't know">I don't know</li>
+        </ul>
+      </div>
+      <br>
+      <div id="task1_q4">
+        <span class="question header">4. What does the red space in the visualization indicate about the average temperature?</span>
+        <br>
+        <ul>
+            <li><input type="radio" name="t1_q4" value="Average temperature is below 50°F">Average temperature is below 32°F</li>
+            <li><input type="radio" name="t1_q4" value="Average temperature is between 50°F and 70°F">Average temperature is between 32°F and 70°F</li>
+            <li><input type="radio" name="t1_q4" value="Average temperature is above 70°F">Average temperature is above 70°F</li>
+            <li><input type="radio" name="t1_q4" value="The park is closed due to low temperatures">The park is closed due to low temperatures</li>
+            <li><input type="radio" name="t1_q4" value="I don't know">I don't know</li>
+        </ul>
+      </div>
+      <br>
+      <div id="task1_q5">
+        <span class="question header">5. What does each colored line represent?</span>
+        <br>
+        <ul> 
+            <li><input type="radio" name="t1_q5" value="Nights spent per type of accomodation">Nights spent per type of accomodation</li>
+            <li><input type="radio" name="t1_q5" value="Temperatures through the year in parks in Bolivia">Temperatures through the year in parks in Bolivia</li>
+            <li><input type="radio" name="t1_q5" value="Popularity of different parks">Popularity of different parks</li>
+            <li><input type="radio" name="t1_q5" value="Visitors per season in the national park">Visitors per season in the national park</li>
+            <li><input type="radio" name="t1_q5" value="I don't know">I don't know</li>
+        </ul>
+      </div>
+      <br>
+      <div id="task1_q6">
+       <span class="question header">6. When a colored line gets closer to the edge of the chart, what does this mean?</span>
+        <br>
+        <ul>
+            <li><input type="radio" name="t1_q6" value="The average temerature is rising.">The average temerature is rising.</li>
+            <li><input type="radio" name="t1_q6" value="The average night stays are nearing 0 nights.">The average night stays are nearing 0 nights.</li>
+            <li><input type="radio" name="t1_q6" value="The average night stays are nearing 14,000 nights.">The average night stays are nearing 25,000 nights.</li>
+            <li><input type="radio" name="t1_q6" value="The park is experiencing its highest visitor activity for the year">The park is experiencing its highest visitor activity for the year.</li>
+            <li><input type="radio" name="t1_q6" value="I don't know">I don't know</li>
+        </ul>
+      </div>
+      <br>
+      <div id="task1_q7">
+        <span class="question header">7. What accommodation is used the least year-round?</span>
+         <br>
+         <ul>
+          <li><input type="radio" name="t1_q7" value="Lodging">Lodging</li>
+          <li><input type="radio" name="t1_q7" value="RV">RV</li>
+          <li><input type="radio" name="t1_q7" value="Tent">Tent</li>
+          <li><input type="radio" name="t1_q7" value="Backcountry">Backcountry</li>
+          <li><input type="radio" name="t1_q7" value="I don't know">I don't know</li>
+         </ul>
+       </div>
+       <br>
+      <div id="task1_q8">
+        <span class="question header">8. Which month appears to have the highest overall visitation regardless of accommodation type?</span>
+         <br>
+         <ul>
+          <li><input type="radio" name="t1_q8" value="January">January</li>
+          <li><input type="radio" name="t1_q8" value="April">April</li>
+          <li><input type="radio" name="t1_q8" value="July">July</li>
+          <li><input type="radio" name="t1_q8" value="October">October</li>
+          <li><input type="radio" name="t1_q8" value="I don't know">I don't know</li>
+         </ul>
+       </div>
+       <div id="task1_q9">
+        <span class="question header">9. What does the outermost ring of the chart likely indicate?</span>
+         <br>
+         <ul>
+          <li><input type="radio" name="t1_q9" value="The maximum value">The maximum value</li>
+          <li><input type="radio" name="t1_q9" value="The minimum value">The minimum value</li>
+          <li><input type="radio" name="t1_q9" value="The average value">The average value</li>
+          <li><input type="radio" name="t1_q9" value="The median value">The median value</li>
+          <li><input type="radio" name="t1_q9" value="I don't know">I don't know</li>
+         </ul>
+       </div>
+       <div id="task1_q10">
+        <span class="question header">10. How many different categories of accommodation are there?</span>
+         <br>
+         <ul>
+          <li><input type="radio" name="t1_q10" value="2">2</li>
+          <li><input type="radio" name="t1_q10" value="3">3</li>
+          <li><input type="radio" name="t1_q10" value="4">4</li>
+          <li><input type="radio" name="t1_q10" value="5">5</li>
+          <li><input type="radio" name="t1_q10" value="I don't know">I don't know</li>
+         </ul>
+       </div>
+    </div>
+</div>
+<style>
+  #questions{
+    display: flex;
+    margin: auto;
+    flex-direction: column;
+  }
+
+  ul {
+  list-style-type: none;
+  }
+
+  #task_1_questions{
+    width: 70%;
+    margin: auto;
+  }
+
+  .instructions {
+    padding-left: 20px;
+    padding-top: 40px;
+    align-items: center;
+    color: #948b87;
+  }
+
+  .flex_layout {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width:60%;
+    margin: auto;
+  }
+
+	.backcountry {
+		background-color: #d27f3c;
+		padding: 3px;
+		padding-left:5px;
+		padding-right: 5px;
+	}
+	.lodging {
+		background-color: #efc13a;
+		padding: 3px;
+		padding-left:5px;
+		padding-right: 5px;
+	}
+	.tent{
+		background-color: #7cb342;
+		padding: 3px;
+		padding-left:5px;
+		padding-right: 5px;
+		
+	}
+	.rv{
+		background-color: #00897b;
+		padding: 3px;
+		padding-left:5px;
+		padding-right: 5px;
+	}
+	.white{
+		background-color: #fff;
+		padding: 3px;
+		padding-left:5px;
+		padding-right: 5px;
+	}
+	.red{
+		background-color: rgba(255, 75, 0, 0.3);
+		padding: 3px;
+		padding-left:5px;
+		padding-right: 5px;
+	}
+
+	.chart-wrapper {
+		display:flex;
+		justify-content: center;
+		align-items: center;
+    width:60%;
+    /* margin:auto; */
+	}
+
+	.chart .month-label {
+		font-size: 10px;
+		fill: #a5a09d;
+	}
+
+	body{
+		--body-color: #948b87;
+		--title-color: #63544e;
+		--background-color: #f5eeeb;
+		--footer-color: #e7deda;
+		--lodging-color: #efc13a;
+		--tent-color: #7cb342;
+		--rv-color: #00897b;
+		--backcountry-color: #d27f3c;
+		font-size: 16px;
+		line-height: 26px;
+		color: var(--body-color);
+		background-color: var(--background-color);
+		font-family: Open Sans,sans-serif;
+	}
+ 
+
+</style>
+
+<script>
+(function() {
+  var data = {};
+
+  experimentr.startTimer('task_1_questions_timer');
+  experimentr.startTimer('task_1_q1_timer');
+  experimentr.startTimer('task_1_q2_timer');
+  experimentr.startTimer('task_1_q3_timer');
+  experimentr.startTimer('task_1_q4_timer');
+  experimentr.startTimer('task_1_q5_timer');
+  experimentr.startTimer('task_1_q6_timer');
+  experimentr.startTimer('task_1_q7_timer');
+  experimentr.startTimer('task_1_q8_timer');
+  experimentr.startTimer('task_1_q9_timer');
+  experimentr.startTimer('task_1_q10_timer');
+  //d3.select('#status').text(experimentr.status());
+
+  // experimentr.release();
+
+  d3.selectAll('input')
+  .filter(function(d) { return this.name === 't1_q1' ? this : null; })
+  .on('change', function() { data.t1_q1 = this.value; experimentr.endTimer('task_1_q1_timer');  validate(); });
+
+  d3.selectAll('input')
+  .filter(function(d) { return this.name === 't1_q2' ? this : null; })
+  .on('change', function() { data.t1_q2 = this.value; experimentr.endTimer('task_1_q2_timer'); validate(); });
+
+  d3.selectAll('input')
+  .filter(function(d) { return this.name === 't1_q3' ? this : null; })
+  .on('change', function() { data.t1_q3 = this.value; experimentr.endTimer('task_1_q3_timer'); validate(); });
+
+  d3.selectAll('input')
+  .filter(function(d) { return this.name === 't1_q4' ? this : null; })
+  .on('change', function() { data.t1_q4 = this.value; experimentr.endTimer('task_1_q4_timer'); validate(); });
+
+  d3.selectAll('input')
+  .filter(function(d) { return this.name === 't1_q5' ? this : null; })
+  .on('change', function() { data.t1_q5 = this.value; experimentr.endTimer('task_1_q5_timer'); validate(); });
+
+  d3.selectAll('input')
+  .filter(function(d) { return this.name === 't1_q6' ? this : null; })
+  .on('change', function() { data.t1_q6 = this.value; experimentr.endTimer('task_1_q6_timer'); validate(); });
+
+  d3.selectAll('input')
+  .filter(function(d) { return this.name === 't1_q7' ? this : null; })
+  .on('change', function() { data.t1_q7 = this.value; experimentr.endTimer('task_1_q7_timer'); validate(); });
+
+  d3.selectAll('input')
+  .filter(function(d) { return this.name === 't1_q8' ? this : null; })
+  .on('change', function() { data.t1_q8 = this.value; experimentr.endTimer('task_1_q8_timer'); validate(); });
+
+  d3.selectAll('input')
+  .filter(function(d) { return this.name === 't1_q9' ? this : null; })
+  .on('change', function() { data.t1_q9 = this.value; experimentr.endTimer('task_1_q9_timer'); validate(); });
+
+  d3.selectAll('input')
+  .filter(function(d) { return this.name === 't1_q10' ? this : null; })
+  .on('change', function() { data.t1_q10 = this.value; experimentr.endTimer('task_1_q10_timer'); validate(); });
+
+  function validate() {
+    if(data.t1_q1 && data.t1_q2 &&
+    data.t1_q3 && data.t1_q4 && data.t1_q5 &&
+      data.t1_q6 && data.t1_q7 && data.t1_q8 && data.t1_q9 && data.t1_q10) {
+
+        // experimentr.endTimer('task_1_questions_timer');
+        // experimentr.addData(data);
+        // experimentr.release();
+    }
+  }
+
+
+  experimentr.release();
+      	//overrides onNext from experimentr
+    d3.select('#next-button')
+      .on('click', function(){
+        if(data.t1_q1 && data.t1_q2 && data.t1_q3 && data.t1_q4 && data.t1_q5 && data.t1_q6 && data.t1_q7 && data.t1_q8 && data.t1_q9 && data.t1_q10){
+          
+          experimentr.endTimer('task_1_questions_timer');
+          experimentr.addData(data);
+          experimentr.next();
+
+        }else{
+          let keeper = []
+          if(!data.t1_q1) keeper.push('question 1')
+          if(!data.t1_q2) keeper.push('question 2')
+          if(!data.t1_q3) keeper.push('question 3')
+          if(!data.t1_q4) keeper.push('question 4')
+          if(!data.t1_q5) keeper.push('question 5')
+          if(!data.t1_q6) keeper.push('question 6')
+          if(!data.t1_q7) keeper.push('question 7')
+          if(!data.t1_q8) keeper.push('question 8')
+          if(!data.t1_q9) keeper.push('question 9')
+          if(!data.t1_q10) keeper.push('question 10')
+          window.alert(`You still need to fill in: ${keeper.join(', ')}`)
+        }
+    });
+}());
+</script>
+
+</body>
+</html>

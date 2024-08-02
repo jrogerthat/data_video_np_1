@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Pie Chart</title>
+</head>
+
+<body>
+
+<div id= "VLAT_pie_chart_timer"> </div>
+<div id="pie_chart">
+  <div class="flex_vlat">
+  <div>
+    <img src = "modules/img/VLAT/pie_chart.png" alt="pie_chart" width="700px"/>
+  </div>
+
+  <div id="pie_chart_question"><strong>What is the approximate global smartphone market share of Samsung?</strong>
+    <div id="pc_answers">
+          <!-- answer = 17 -->
+      <ul>
+        <li><input type="radio" id="a1" name="pie_chart_question" value="17.6%">17.6%</li>
+        <li><input type="radio" id="a2" name="pie_chart_question" value="25.3%">25.3%</li>
+        <li><input type="radio" id="a3" name="pie_chart_question" value="10.9%">10.9%</li>
+        <li><input type="radio" id="a4" name="pie_chart_question" value="35.2%">35.2%</li>
+        <li> <input type="radio" id="a5" name="pie_chart_question" value="Skip">Skip</li>
+      </ul>
+    </div>
+  </div>
+</div>
+</div>
+
+<style>
+ 
+</style>
+
+<script> 
+(function() {
+  var data = {};
+  var answers = {};
+  
+  init();
+  
+  function init(){
+
+	data.pie_chart_question = null;
+
+    //start timer
+  	experimentr.attachTimer('#VLAT_pie_chart_timer', 25, function(){
+  	  if(experimentr.get_current() == 'modules/miniVLAT/pie_chart.html'){
+    		experimentr.endTimer('VLAT_pie_chart_timer');
+    		
+    		experimentr.addData(data);
+    		experimentr.next();
+    	}
+  	});
+
+	d3.selectAll('input')
+	.on('change', function() { data.pie_chart_question = this.value; });
+  	
+  	//overrides onNext from experimentr
+    d3.select('#next-button')
+      .on('click', function(){
+        experimentr.endTimer('VLAT_pie_chart_timer');
+        experimentr.addData(data);
+        experimentr.next();
+    });
+    
+    experimentr.startTimer('VLAT_pie_chart_timer');
+    experimentr.release();
+   
+  }
+}());
+</script>
+</body>
+</html>

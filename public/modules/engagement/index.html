@@ -1,0 +1,129 @@
+
+<div id="engagement">
+    <h2>Data Video Study</h2>
+    
+    <div id="cognitive_involvement"><strong>I found the content easy to understand.</strong>
+        <div id="c_i">
+            <input type="radio" id="a1" name="cognitive_involvement" value="Strongly Agree"> Strongly Agree
+            <input type="radio" id="a2" name="cognitive_involvement" value="Agree"> Agree
+            <input type="radio" id="a3" name="cognitive_involvement" value="Slightly Agree"> Slightly Agree
+            <input type="radio" id="a4" name="cognitive_involvement" value="Slightly Disagree"> Slightly Disagree
+            <input type="radio" id="a5" name="cognitive_involvement" value="Disagree"> Disagree
+            <input type="radio" id="a6" name="cognitive_involvement" value="Strongly Disagree"> Strongly Disagree
+        </div>
+    </div>
+    <br>
+    <div id="affective_involvement"><span id="affective_involvement_span">This visualization triggered my emotions</span>
+        <div id="a_i">
+            <input type="radio" id="a1" name="affective_involvement" value="Strongly Agree"> Strongly Agree
+            <input type="radio" id="a2" name="affective_involvement" value="Agree"> Agree
+            <input type="radio" id="a3" name="affective_involvement" value="Slightly Agree"> Slightly Agree
+            <input type="radio" id="a4" name="affective_involvement" value="Slightly Disagree"> Slightly Disagree
+            <input type="radio" id="a5" name="affective_involvement" value="Disagree"> Disagree
+            <input type="radio" id="a6" name="affective_involvement" value="Strongly Disagree"> Strongly Disagree
+        </div>
+    </div>
+    <br>
+    <div id="enjoyment"><span id="enjoyment_span">These visualization were fun to explore</span>
+        <div id="en">
+            <input type="radio" id="a1" name="enjoyment" value="Strongly Agree"> Strongly Agree
+            <input type="radio" id="a2" name="enjoyment" value="Agree"> Agree
+            <input type="radio" id="a3" name="enjoyment" value="Slightly Agree"> Slightly Agree
+            <input type="radio" id="a4" name="enjoyment" value="Slightly Disagree"> Slightly Disagree
+            <input type="radio" id="a5" name="enjoyment" value="Disagree"> Disagree
+            <input type="radio" id="a6" name="enjoyment" value="Strongly Disagree"> Strongly Disagree
+        </div>
+    </div>
+    <br>
+    <div id="focused_attention"><strong>I found my mind wandering during these tasks.</strong>
+        <div id="f_a">
+            <input type="radio" id="a1" name="focused_attention" value="Strongly Agree"> Strongly Agree
+            <input type="radio" id="a2" name="focused_attention" value="Agree"> Agree
+            <input type="radio" id="a3" name="focused_attention" value="Slightly Agree"> Slightly Agree
+            <input type="radio" id="a4" name="focused_attention" value="Slightly Disagree"> Slightly Disagree
+            <input type="radio" id="a5" name="focused_attention" value="Disagree"> Disagree
+            <input type="radio" id="a6" name="focused_attention" value="Strongly Disagree"> Strongly Disagree
+        </div>
+    </div>
+    <br>
+    <div id="experience"><strong>I feel like I could construct a story based on what I learned.</strong>
+        <div id="exp">
+            <input type="radio" id="a1" name="experience" value="Strongly Agree"> Strongly Agree
+            <input type="radio" id="a2" name="experience" value="Agree"> Agree
+            <input type="radio" id="a3" name="experience" value="Slightly Agree"> Slightly Agree
+            <input type="radio" id="a4" name="experience" value="Slightly Disagree"> Slightly Disagree
+            <input type="radio" id="a5" name="experience" value="Disagree"> Disagree
+            <input type="radio" id="a6" name="experience" value="Strongly Disagree"> Strongly Disagree
+        </div>
+    </div>
+    <br>
+    </div>
+    
+    <script> 
+    (function() {
+    
+      var data = {}; 
+
+      if(experimentr.condition() === 1){
+        d3.select("#affective_involvement_span").node().innerHTML = '<strong>These videos triggered my emotions</strong>';
+        d3.select("#enjoyment_span").node().innerHTML = '<strong>These videos were fun to watch.</strong>';
+      }else{
+        d3.select("#affective_involvement_span").node().innerHTML = '<strong>The content triggered my emotions</strong>';
+        d3.select("#enjoyment_span").node().innerHTML = '<strong>The visualizations were fun to explore.</strong>';
+      }
+    
+      experimentr.startTimer('engagement');
+
+    
+      d3.selectAll('input')
+      .filter(function(d) { return this.name === 'cognitive_involvement' ? this : null; })
+      .on('change', function() { data.cognitive_involvement = this.value; validate(); });
+      
+      d3.selectAll('input')
+      .filter(function(d) { return this.name === 'affective_involvement' ? this : null; })
+      .on('change', function() { data.affective_involvement = this.value; validate(); });
+      
+      d3.selectAll('input')
+      .filter(function(d) { return this.name === 'enjoyment' ? this : null; })
+      .on('change', function() { data.enjoyment = this.value; validate(); });
+      
+      d3.selectAll('input')
+      .filter(function(d) { return this.name === 'focused_attention' ? this : null; })
+      .on('change', function() { data.focused_attention = this.value; validate(); });
+       
+      d3.selectAll('input')
+      .filter(function(d) { return this.name === 'experience' ? this : null; })
+      .on('change', function() { data.experience = this.value; validate(); });
+       
+        
+      function validate() {
+          if(data.cognitive_involvement && data.affective_involvement && data.enjoyment && data.focused_attention && data.experience) {
+            // experimentr.endTimer('demo');
+            // experimentr.addData(data);
+            // experimentr.release();
+            return true;
+          } 
+        }
+    
+        experimentr.release();
+              //overrides onNext from experimentr
+        d3.select('#next-button')
+          .on('click', function(){
+            if(data.cognitive_involvement && data.affective_involvement && data.enjoyment && data.focused_attention && data.experience){
+                console.log('PRESSED YES');
+                experimentr.endTimer('engagement');
+                experimentr.addData(data);
+                experimentr.next();
+            }else{
+                console.log('this work?')
+                let keeper = []
+                if(!data.cognitive_involvement) keeper.push('question 1')
+                if(!data.affective_involvement) keeper.push('question 2')
+                if(!data.enjoyment) keeper.push('question 3')
+                if(!data.focused_attention) keeper.push('question 4')
+                if(!data.experience) keeper.push('question 5')
+                window.alert(`You still need to fill in: ${keeper.join(', ')}`)
+            }
+        });
+    }());
+    </script>

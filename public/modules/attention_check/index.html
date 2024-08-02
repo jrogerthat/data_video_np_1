@@ -1,0 +1,44 @@
+<div id="attention_check">
+    <p>
+        Select 'Strongly Agree' to show you are paying attention to this question:
+    </p>
+        
+   
+    <ul>
+        <li><input class="att-check" type="radio" name="att-check" value="Strongly Agree" />Strongly Agree</li>
+        <li><input class="att-check" type="radio" name="att-check" value="Agree" />Agree</li>
+        <li><input class="att-check" type="radio" name="att-check" value="Disagree" />Disagree</li>
+        <li><input class="att-check" type="radio" name="att-check" label="Strongly Disagree" value="Strongly Disagree" />Strongly Disagree</li>
+    </ul>
+    
+</div>
+<style>
+    ul {
+        list-style-type: none;
+    }
+    #attention_check{
+      width:70%;
+      margin:auto;
+    }
+</style>
+
+<script>
+    (function() {
+      var data = {};
+
+      // experimentr.hideNext(); 
+    
+      d3.selectAll('input.att-check')
+        .on('change', function() { data.attention_check = this.value; validate(); });
+    
+      experimentr.startTimer('attention_check');
+    
+      function validate() {
+        if(data.attention_check) {
+          experimentr.endTimer('attention_check');
+          experimentr.addData(data);
+          experimentr.next();
+        }
+      }
+    }());
+    </script>

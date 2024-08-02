@@ -1,0 +1,40 @@
+<div id="task_2_question_prep">
+<h2>Task 2 Question Prep</h2>
+
+<p>After you <span id="condition_instruction_task_2"></span>, 
+  you will be asked a set of questions measuring your understanding of the visualization and transfer what you've 
+  learned. <strong>Remember, you cannot go back or reload for the duration of this study.</strong></p>
+  <h3>To answer the questions, you should learn the following before you leave the next page:</h3>
+    <ul>
+      <li>Understand seasonal changes and trends and be able to make travel recommendations based on these.</li>
+      <li>Make note of highs and lows of nights spent in Jellystone park and when they happen.</li>
+      <li>Be able to correlate temperature and activity.</li>
+      <li>Understand the Axes!</li>
+      <li>Example question: <em>"You are planning a trip to Jellystone but want to choose the least popular accommodation to beat the crowds. 
+        What type of accommodation has the least amount of nights spent per year?"</em></li>
+    </ul>
+    
+</div>
+
+<style>
+  #task_2_question_prep {
+    width: 70%;
+    margin: auto;
+  }
+</style>
+<script> 
+(function() {
+  
+  d3.select('#condition_instruction_task_2').node().innerHTML = (experimentr.condition() === 1) ? `you watch a data video about staying in Jellystone National Park`: `you read a short narrative about staying in Jellystone National Park`;
+
+  experimentr.startTimer('task_2_q_prep_timer');
+
+  experimentr.release();
+
+  d3.select('#next-button')
+      .on('click', function(){
+        experimentr.endTimer('task_2_q_prep_timer');
+        experimentr.next()
+      });
+}());
+</script>

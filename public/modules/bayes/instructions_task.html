@@ -1,0 +1,33 @@
+<div id="task_2_instructions">
+<h2>Task (Instructions)</h2>
+
+<p>For this task, <span id="condition_instruction_task_2"></span> After this, you will be asked a set of questions measuring your understanding of the visualization and transfer what you've 
+  learned to scenarios involving trip planning.<strong>Remember, you cannot go back or reload for the duration of this study.</strong></p>
+  <h4>Please read carefully:</h4>
+  <ul>
+    <li>You will <strong>not</strong> have the visualization for reference when you answer these questions.</li>
+    <li>You will have three minutes <span id="condition_instruction_task_2_B"></span>. Please study the visualization carefully.</li>
+    <li>Once you move on to the multiple choice questions, <strong>you will not be able to go back or reload.</strong></li>
+    <li>If you do not remember the answer, <strong>please do not guess. </strong>Every question has an "I do not recall" option.</li>
+    <li>Keep in mind, that the weather patterns in this park may or may not match what you expect.</li>
+ 
+  </ul> 
+</div>
+
+<style>
+  #task_2_instructions {
+    width: 70%;
+    margin: auto;
+  }
+</style>
+<script> 
+(function() {
+  
+  d3.select('#condition_instruction_task_2').node().innerHTML = (experimentr.condition() === 1) ? `you will watch a data video about staying in Jellystone National Park. 
+ While you watch the video, you will solve a puzzle.`: `you will read a short narrative about staying in Jellystone National Park. During your time reading the narrative, you will solve a puzzle.`;
+
+  d3.select('#condition_instruction_task_2_B').node().innerHTML = (experimentr.condition() === 1) ? `to watch the data video and solve the puzzle. You can watch the video multiple times.`: `to study the visualization and solve the puzzle.`;
+
+  experimentr.release();
+}());
+</script>

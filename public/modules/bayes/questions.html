@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Bayesian Reasoning</title>
+</head>
+
+<body>
+  <div id="bayes_questions_timer"></div>
+  <div id="bayes_questions">
+    <div id="chart-wrapper"></div>
+    <h5> <span id="status"></span> </h5>
+    <h3 id="bayes_question_header">**NOTE:<br> 
+      <span id="insert"></span>
+      </h3>
+    <br>
+    <div>
+      <form>
+        <label for="bayes_q1">1. How many people will test positive?</label>
+        <input type="text" id="bayes_q1" name="bayes_q1"><br>
+        <br>
+        <label for="bayes_q2">2. Of those who test positive, how many will actually have the disease?</label>
+        <input type="text" id="bayes_q2" name="bayes_q2"><br>
+        <br>
+        <label for="bayes_q3">3. How many people will test negative?</label>
+        <input type="text" id="bayes_q3" name="bayes_q3"><br>
+        <br>
+        <label for="bayes_q4">4. Of those who test negative, how many will actually *not* have the disease?</label>
+        <input type="text" id="bayes_q3" name="bayes_q4">
+      </form>
+    </div>
+  
+      <br>
+      </div>
+    </div>
+</div>
+
+<style>
+    ul {
+    list-style-type: none;
+    }
+    #task_2_questions{
+      width: 70%;
+      margin: auto;
+    }
+ 
+</style>
+
+<script>
+(function() {
+  var data = {};
+
+  // let ob = d3.select('#chart-wrapper').append('object');
+  //       ob.attr('data', experimentr.condition() === 1 ? 'modules/bayes/bayes_figure_grouped_more.svg' : "modules/bayes/bayes_figure_random_more.svg"); 
+  //       ob.attr('width', 'auto')
+  //       ob.attr('height', '300px')
+    //start timer
+  	// experimentr.attachTimer('#bayes_stimulus_timer', 120, function(){
+  	//   if(experimentr.get_current() == 'modules/bayes/stimulus.html'){ 
+    // 		experimentr.endTimer('bayes_stimulus_timer');
+    		
+    // 		experimentr.addData(data);
+    // 		experimentr.next();
+    // 	}
+  	// });
+   
+    if(experimentr.condition() === 3 || experimentr.condition() === 4){
+
+        d3.select('#insert').append('text').text('After watching the video, please answer the questions: ')
+        d3.select('.instructions').remove();
+
+        let vid = d3.select('#chart-wrapper').append('video');
+        vid.attr('controls', true);
+        vid.attr('width', '950px');
+        vid.attr('height', '400px');
+        let source = vid.append('source');
+        // source.attr('src', experimentr.condition() === 3 ? 'modules/bayes/group.mp4' : 'modules/bayes/random.mp4');
+        source.attr('src', 'modules/bayes/random.mp4');
+
+
+        let caption = vid.append('track')
+        caption.attr('src', 'modules/bayes/captions.vtt')
+        caption.attr('label', 'English')
+        caption.attr('kind', 'captions')
+        caption.attr('srclang', "en-us")
+        caption.attr('default', true);
+
+    }else{
+        d3.select('#insert').append('text').text(`This is a visualization for a newly discovered disease, 
+        Disease X, which is transmitted by a 
+        bacterial infection found in the population.
+        There is a test to detect whether or not a person has the disease, 
+        but it is not perfect. This visualization represents 100 people. Please answer the questions using the above visualization and legend regarding positive 
+        and negative tests and people that actually have disease X: `)
+        let ob = d3.select('#chart-wrapper').append('object');
+        // ob.attr('data', experimentr.condition() === 1 ? 'modules/bayes/bayes_figure_group.svg' : "modules/bayes/bayes_figure_random.svg"); 
+        ob.attr('data', "modules/bayes/bayes_figure_random.svg"); 
+        ob.attr('width', 'auto')
+        ob.attr('height', '300px')
+    }
+
+
+  experimentr.startTimer('bayes_questions_timer');
+  experimentr.startTimer('bayes_q1_timer');
+  experimentr.startTimer('bayes_q2_timer');
+  experimentr.startTimer('bayes_q3_timer');
+  experimentr.startTimer('bayes_q4_timer');
+  //d3.select('#status').text(experimentr.status());
+
+  // experimentr.release();
+
+  d3.selectAll('input')
+  .filter(function(d) { return this.name === 'bayes_q1' ? this : null; })
+  .on('change', function() { data.bayes_q1 = this.value; experimentr.endTimer('bayes_q1_timer');  validate(); });
+
+  d3.selectAll('input')
+  .filter(function(d) { return this.name === 'bayes_q2' ? this : null; })
+  .on('change', function() { data.bayes_q2 = this.value; experimentr.endTimer('bayes_q2_timer'); validate(); });
+
+  d3.selectAll('input')
+  .filter(function(d) { return this.name === 'bayes_q3' ? this : null; })
+  .on('change', function() { data.bayes_q3 = this.value; experimentr.endTimer('bayes_q3_timer'); validate(); });
+
+  d3.selectAll('input')
+  .filter(function(d) { return this.name === 'bayes_q4' ? this : null; })
+  .on('change', function() { data.bayes_q4 = this.value; experimentr.endTimer('bayes_q4_timer'); validate(); });
+
+  function validate() {
+    if(data.bayes_q1 && data.bayes_q2 && data.bayes_q3 && data.bayes_q4) {
+
+        // experimentr.endTimer('task_2_questions_timer');
+        // experimentr.addData(data);
+        // experimentr.release();
+    }
+  }
+
+  experimentr.release();
+      	//overrides onNext from experimentr
+    d3.select('#next-button')
+      .on('click', function(){
+        if(data.bayes_q1 && data.bayes_q2 && data.bayes_q3 && data.bayes_q4){
+          
+          experimentr.endTimer('bayes_questions_timer');
+          experimentr.addData(data);
+          experimentr.next();
+
+        }else{
+          console.log(data.bayes_q1)
+          let keeper = []
+          if(!data.bayes_q1) keeper.push('question 1')
+          if(!data.bayes_q2) keeper.push('question 2')
+          if(!data.bayes_q3) keeper.push('question 3')
+          if(!data.bayes_q4) keeper.push('question 4')
+          window.alert(`You still need to fill in: ${keeper.join(', ')}`)
+        }
+    });
+}());
+</script>
+
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Stacked Bar Chart</title>
+</head>
+
+<body>
+
+<div id= "VLAT_stacked_bar_chart_timer"> </div>
+<div id="stacked_bar_chart">
+  <div class="flex_vlat">
+    <div>
+      <img src = "modules/img/VLAT/stacked_bar_chart.png" alt="stacked_bar_chart" width="700px"/>
+    </div>
+
+
+  <div id="stacked_bar_chart_question"><strong>What is the cost of peanuts in Seoul?</strong>
+    <div id="sbc_answers">
+          <!-- answer = 6 -->
+      <ul>
+        <li><input type="radio" id="a1" name="stacked_bar_chart_question" value="5.2">5.2</li>
+        <li><input type="radio" id="a2" name="stacked_bar_chart_question" value="6.1">6.1</li>
+        <li><input type="radio" id="a3" name="stacked_bar_chart_question" value="7.5">7.5</li>
+        <li><input type="radio" id="a4" name="stacked_bar_chart_question" value="4.5">4.5</li>
+        <li><input type="radio" id="a5" name="stacked_bar_chart_question" value="Skip">Skip</li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<style>
+ 
+</style>
+
+<script> 
+(function() {
+  var data = {};
+  var answers = {};
+  
+
+  init();
+  
+  function init(){
+
+	data.stacked_bar_chart_question = null;
+
+    //start timer
+  	experimentr.attachTimer('#VLAT_stacked_bar_chart_timer', 25, function(){
+  	  if(experimentr.get_current() == 'modules/miniVLAT/stacked_bar_chart.html'){
+    		experimentr.endTimer('VLAT_stacked_bar_chart_timer');
+    		
+    		experimentr.addData(data);
+    		experimentr.next();
+    	}
+  	});
+
+	d3.selectAll('input')
+	.on('change', function() { data.stacked_bar_chart_question = this.value; });
+  	
+  	//overrides onNext from experimentr
+    d3.select('#next-button')
+      .on('click', function(){
+        experimentr.endTimer('VLAT_stacked_bar_chart_timer');
+        experimentr.addData(data);
+        experimentr.next();
+    });
+    
+    experimentr.startTimer('VLAT_stacked_bar_chart_timer');
+    experimentr.release();
+   
+  }
+}());
+</script>
+</body>
+</html>

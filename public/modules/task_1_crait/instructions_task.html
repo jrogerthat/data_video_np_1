@@ -1,0 +1,35 @@
+<div id="task_1_instructions">
+<h2>Task 1 (Instructions)</h2>
+
+<p>For task 1, you will 
+  see <span id="condition_instruction_task_1"></span>
+  for overnight stays in the fictional Crait National Park with instructions on how to read the visualization. 
+  After you read the instructions and study the visualization, you will be asked a set of questions measuring your understanding of the visualization.
+</p>
+  <h4>Please read carefully:</h4>
+  <ul>
+    <li> <strong>Remember, you cannot go back or reload for the duration of this study.</strong></li>
+    <li>You will have two minutes to <span id="condition_instruction_task_1_B"></span>. Please read and study the visualization carefully.</li>
+    <li>If you do not remember the answer, <strong>please do not guess. </strong>Every question has an "I don't know" option.</li>
+    <li>You will <strong>not</strong> have the visualization for reference when you answer these questions.</li>
+  </ul>
+</div>
+
+<style>
+  #task_1_instructions {
+    width: 70%;
+    margin: auto;
+  }
+</style>
+
+<script> 
+(function() {
+
+  d3.select('#condition_instruction_task_1').node().innerHTML = (experimentr.condition() === 1) ? `a data video`: `a visualization`;
+  d3.select('#condition_instruction_task_1_B').node().innerHTML = (experimentr.condition() === 1) ? `watch the data video. You can play the video back multiple times.`: `study the visualization with the breakdown`;
+  
+  experimentr.release();
+
+
+}());
+</script>

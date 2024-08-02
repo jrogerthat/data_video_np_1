@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Bayesian Reasoning for Disease X</title>
+</head>
+
+<body>
+
+<div id= "bayes_stimulus_timer"> </div>
+<div class="flex_layout">
+	<div id="bayes_stimulus">
+		<div class="chart-wrapper">
+		</div>
+	</div>
+	<div class="instructions">
+		<p>There is a newly discovered disease, Disease X, which is transmitted by a bacterial infection found in the population.
+    There is a test to detect whether or not a person has the disease, but it is not perfect. Here is some information about
+    the current research on Disease X and efforts to test for the infection that causes it.</p>
+    <p>There is a total of 100 people in the population. Out of the 100 people in the population, 6 people actually have the disease.
+    Out of these 6 people, 4 will receive a positive test result and 2 will receive a negative test result. On the other hand,
+    94 people do not have the disease (i.e., they are perfectly healthy). Out of these 94 people, 16 will receive a positive
+    test result and 78 will receive a negative test result.
+    </p>
+</div>
+
+
+</div>
+
+<style>
+	.instructions {
+		padding-left: 20px;
+		padding-top: 20px;
+		align-items: center;
+		color: #948b87;
+	}
+	.flex_layout {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-around;
+		width:90%;
+		margin: auto;
+		align-items: center;
+	}
+
+	foreignObject {
+		x: 0;
+		y: 0;
+		width: 220;
+		height: 50;
+	}
+	user agent stylesheet
+	:not(svg) {
+		transform-origin: 0px 0px;
+	}
+
+	foreignObject {
+		display: block;
+		overflow: hidden;
+	}
+
+	.chart-wrapper {
+		display:flex;
+		justify-content: center;
+		align-items: center;
+	}
+ 
+</style>
+
+<script> 
+(function() {
+
+  var data = {};
+  var answers = {};
+  init();
+  
+  function init(){
+
+	data.bayes_stimulus = null;
+
+    //start timer
+  	experimentr.attachTimer('#bayes_stimulus_timer', 120, function(){
+  	  if(experimentr.get_current() == 'modules/bayes/stimulus.html'){ 
+    		experimentr.endTimer('bayes_stimulus_timer');
+    		
+    		experimentr.addData(data);
+    		experimentr.next();
+    	}
+  	});
+   
+    if(experimentr.condition() === 3 || experimentr.condition() === 4){
+        d3.select('.instructions').remove();
+
+        let vid = d3.select("#bayes_stimulus").append('video');
+        vid.attr('controls', true);
+        vid.attr('width', '950px');
+        vid.attr('height', '400px');
+        let source = vid.append('source');
+        source.attr('src', experimentr.condition() === 3 ? 'modules/bayes/group.mp4' : 'modules/bayes/random.mp4');
+
+
+        let caption = vid.append('track')
+		caption.attr('src', 'modules/bayes/captions.vtt')
+		caption.attr('label', 'English')
+		caption.attr('kind', 'captions')
+		caption.attr('srclang', "en-us")
+		caption.attr('default', true);
+
+    }else{
+        let ob = d3.select('.chart-wrapper').append('object');
+        ob.attr('data', experimentr.condition() === 1 ? 'modules/bayes/bayes_figure_group.svg' : "modules/bayes/bayes_figure_random.svg"); 
+        ob.attr('width', 'auto')
+        ob.attr('height', '300px')
+    }
+
+  	//overrides onNext from experimentr
+    d3.select('#next-button')
+      .on('click', function(){
+		if(confirm("Are you sure you want to move on to the questions? \nYou won't be able to go back.")){
+			console.log('PRESSED YES');
+            experimentr.endTimer('bayes_stimulus_timer');
+            data.used_next = true;
+			experimentr.addData(data);
+        	experimentr.next();
+		}
+        // experimentr.addData(data);
+        // experimentr.next();
+    });
+    
+    experimentr.startTimer('bayes_stimulus_timer');
+    experimentr.release();
+  }
+  
+}());
+</script>
+</body>
+</html>

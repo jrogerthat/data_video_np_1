@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Task 2</title>
+</head>
+
+<body>
+
+<div id= "task_2_stimulus_timer"> </div>
+<div class="flex_layout">
+<div id="static_task_1">
+	<div class="chart-wrapper">
+		<!-- <object data="modules/task_2_jellystone/jellystone_vis.svg" width="auto" height="460"> </object> -->
+	</div>
+</div>
+<div class="writing">
+    <div class="instructions">
+    <p>Jellystone is one of the busiest national parks in Tasmania. If you're planning a trip to Jellystone and prefer <span class="tent">tent camping</span>, 
+		the most popular time to visit is between February and March when the average nightly temperature is between 32°F (above freezing) and 70°F. The park experiences its highest tent camping activity during this time, with approximately 
+		140,000 nights spent in campgrounds at its peak. You'll notice that <span class="rv">RV camping</span> nights remain well below that of campgrounds and lodges. That is because out of the 12 campgrounds in the park, only one has RV hookups available. 
+		Those brave enough to explore the Tasmanian backcountry will likely have a night under the stars to themselves. <span class="backcountry">Backcountry camping</span> is the least utilized, not quite reaching 5,000 nights at its peak of the season. </p>
+
+    <p>Jellystone has average temperatures that dip <span class="white">below freezing</span> for a staggering 9 months. Though the park is open year-round, most roads and facilities close from May to December, 
+		limiting access to those of us who are not traveling by snowmobile or skis. We can see this in the visualization, with <span class="lodging">lodging</span> being the only accommodation used during that time. 
+		You will notice a small bump in overnight stays in August when people stay in the park to cross-country ski and snowshoe.
+    </p>
+    </div>
+
+    </P>
+</div>
+
+</div>
+<style>
+		.backcountry {
+		background-color: #d27f3c;
+		padding: 3px;
+		padding-left:5px;
+		padding-right: 5px;
+	}
+	.lodging {
+		background-color: #efc13a;
+		padding: 3px;
+		padding-left:5px;
+		padding-right: 5px;
+	}
+	.tent{
+		background-color: #7cb342;
+		padding: 3px;
+		padding-left:5px;
+		padding-right: 5px;
+		
+	}
+	.rv{
+		background-color: #00897b;
+		padding: 3px;
+		padding-left:5px;
+		padding-right: 5px;
+	}
+	.white{
+		background-color: #fff;
+		padding: 3px;
+		padding-left:5px;
+		padding-right: 5px;
+	}
+	.red{
+		background-color: rgba(255, 75, 0, 0.3);
+		padding: 3px;
+		padding-left:5px;
+		padding-right: 5px;
+	}
+
+	.writing {
+		padding-left: 20px;
+		padding-top: 35px;
+		align-items: center;
+		color: #948b87;
+		/* width: 2000px; */
+	}
+	.flex_layout {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-around;
+		width:80%;
+		margin: auto;
+	}
+
+	.chart-wrapper {
+		display:flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	body{
+		--body-color: #948b87;
+		--title-color: #63544e;
+		--background-color: #f5eeeb;
+		--footer-color: #e7deda;
+		--lodging-color: #efc13a;
+		--tent-color: #7cb342;
+		--rv-color: #00897b;
+		--backcountry-color: #d27f3c;
+		font-size: 16px;
+		line-height: 26px;
+		color: var(--body-color);
+		background-color: var(--background-color);
+		font-family: Open Sans,sans-serif;
+	}
+ 
+</style>
+
+<script> 
+(function() {
+  var data = {};
+  var answers = {};
+  
+  init();
+  
+  function init(){
+
+	// data.task_2_stimulus = null;
+    //start timer
+  	experimentr.attachTimer('#task_2_stimulus_timer', 180, function(){
+  	  if(experimentr.get_current() == 'modules/task_2_jellystone/stimulus.html'){ 
+    		experimentr.endTimer('task_2_stimulus_timer');
+    		experimentr.addData(data);
+    		experimentr.next();
+    	}
+  	});
+
+	if(experimentr.condition() === 1){
+
+	let vid = d3.select('.chart-wrapper').append('video');
+	vid.attr('controls', true);
+	vid.attr('width', '382px');
+	vid.attr('height', '620px');
+	let source = vid.append('source');
+	source.attr('src', 'modules/task_2_jellystone/jellystone_vis.mov');
+	let caption = vid.append('track')
+	caption.attr('src', 'modules/task_2_jellystone/captions.vtt')
+	caption.attr('label', 'English')
+	caption.attr('kind', 'captions')
+	caption.attr('srclang', "en-us")
+	caption.attr('default', true)
+
+	
+
+	d3.select('.instructions').remove();
+
+	}else{
+	let ob = d3.select('.chart-wrapper').append('object');
+	ob.attr('data', "modules/task_2_jellystone/jellystone_vis.svg");
+	ob.attr('width', 'auto')
+	ob.attr('height', '460px')
+	}
+
+  	
+	d3.select('#next-button')
+      .on('click', function(){
+		if(confirm("Are you sure you want to move on to the questions? \nYou won't be able to go back.")){
+			experimentr.endTimer('task_2_stimulus_timer');
+			experimentr.addData(data);
+        	experimentr.next();
+		}
+    });
+    
+    experimentr.startTimer('task_2_stimulus_timer');
+    experimentr.release();
+   
+  }
+  
+}());
+</script>
+</body>
+</html>

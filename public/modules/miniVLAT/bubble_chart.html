@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Bubble Chart</title>
+</head>
+
+<body>
+
+<div id= "VLAT_bubble_chart_timer"> </div>
+<div id="bubble_chart">
+  <div class="flex_vlat">
+    <div>
+      <img src = "modules/img/VLAT/bubble_chart.png" alt="bubble_chart" width="700px"/> 
+    </div>
+    <div id="bubble_chart_question"><strong>Which city’s metro system has the largest number of stations?</strong>
+      <div id="bc_answers">
+            <!-- answer = Shanghai -->
+            <ul>
+              <li><input type="radio" id="a1" name="bubble_chart_question" value="Beijing">Beijing</li>
+              <li><input type="radio" id="a2" name="bubble_chart_question" value="Shanghai"> Shanghai</li>
+              <li><input type="radio" id="a3" name="bubble_chart_question" value="London">London</li>
+              <li><input type="radio" id="a4" name="bubble_chart_question" value="Seoul">Seoul</li>
+              <li><input type="radio" id="a5" name="bubble_chart_question" value="Skip">Skip</li>
+            </ul>
+      </div>
+    </div>
+</div>
+</div>
+
+<style>
+ 
+</style>
+
+<script> 
+(function() {
+  var data = {};
+  var answers = {};
+  
+
+  init();
+  
+  function init(){
+
+	data.bubble_chart_question = null;
+
+    //start timer
+  	experimentr.attachTimer('#VLAT_bubble_chart_timer', 25, function(){
+  	  if(experimentr.get_current() == 'modules/miniVLAT/bubble_chart.html'){
+    		experimentr.endTimer('VLAT_bubble_chart_timer');
+    		
+    		experimentr.addData(data);
+    		experimentr.next();
+    	}
+  	});
+
+	d3.selectAll('input')
+	.on('change', function() { data.bubble_chart_question = this.value; });
+  	
+  	//overrides onNext from experimentr
+    d3.select('#next-button')
+      .on('click', function(){
+        experimentr.endTimer('VLAT_bubble_chart_timer');
+        experimentr.addData(data);
+        experimentr.next();
+    });
+    
+    experimentr.startTimer('VLAT_bubble_chart_timer');
+    experimentr.release();
+   
+  }
+}());
+</script>
+</body>
+</html>

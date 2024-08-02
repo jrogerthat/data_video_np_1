@@ -1,0 +1,131 @@
+/*body {
+    text-align: center;
+    font-family: Arial;
+    margin-left: 20px;
+    font-size: 14px;
+}*/
+
+#intro {
+    border-bottom: 1px solid grey;
+    padding-bottom: 10px;
+}
+
+#controlTxt {
+    padding-bottom: 10px;
+    border-bottom: 1px solid lightgrey;
+}
+
+#click_here {
+    /*height: 45px;*/
+    width: 55px; 
+    float: left;
+    position: relative;
+    fill: red; 
+    padding: 0; 
+}
+
+#checks_dir {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.container {
+    padding: 15px;
+    float: center;
+    padding-bottom: 5px; 
+}
+
+.shelf {
+  text-align: center;
+  border-bottom: 1px solid lightgrey;
+  padding: 10px;
+}
+
+.ex_legend {
+  text-align: center;
+  border-bottom: 1px solid lightgrey;
+  border-top: 1px solid lightgrey;
+  padding: 10px;
+}
+
+.ex_legend_2 {
+  text-align: left;
+  border-bottom: 1px solid lightgrey;
+  border-top: 1px solid lightgrey;
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+#answers {
+    padding: 10px;
+    border-top: 1px solid grey;
+}
+
+text {
+    display: inline-block;
+    position: relative;
+}
+
+#full_svg {
+    padding: 0;
+}
+
+#full_svg2 {
+    padding: 0;
+}
+
+.have_disease_rect {
+    fill: rgb(255,255,191, 1);
+    /*fill: rgb(231,138,195, 0.25);
+    /*fill: rgb(241, 241, 210, 1);*/
+    width: 35px;
+    height: 35px; 
+}
+
+#have_disease_cb_text {
+    background-color: rgb(255,255,191, 1);
+    /*background-color: rgb(231,138,195, 0.25);*/
+    /*background-color: rgb(241, 241, 210, 1);*/
+    color: black; 
+}
+
+.do_not_have_disease_rect {
+    fill: rgb(145,191,219, 0.5);
+    /*fill: rgb(102,194,165, 0.25);*/
+    /*fill: rgb(171, 195, 173, 0.5);*/
+    width: 35px;
+    height: 35px;
+}
+
+#do_not_have_disease_cb_text {
+    background-color: rgb(145,191,219, 0.5);
+    /*background-color: rgb(102,194,165, 0.25);*/
+    /*background-color: rgb(171, 195, 173, 0.5);*/
+    color: black;
+}
+
+.test_positive {
+    --primary-color: rgb(252,141,89); 
+    /*--primary-color: rgb(252,141,98); */
+    /*--primary-color: rgb(148, 0, 58); */
+}
+
+#test_positive_cb_text {
+     background-color: rgb(252,141,89);
+   /* background-color: rgb(252,141,98);*/
+    /*background-color: rgb(148, 0, 58); */
+    color: white; 
+}
+
+.test_negative { 
+    --primary-color: rgb(105,105,105);
+    /*--primary-color: rgb(141,160,203);*/
+    /*--primary-color: rgb(144,124,117);*/
+}
+
+#test_negative_cb_text {
+     background-color: rgb(105,105,105);
+   /* background-color: rgb(141,160,203);*/
+    /*background-color: rgb(144,124,117);*/
+    color: white; 
+}

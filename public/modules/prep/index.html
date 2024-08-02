@@ -1,0 +1,231 @@
+<div id="exp">
+ <h1>Bayesian Reasoning Study</h1>
+</div>
+
+<svg height="10" width="10" xmlns="http://www.w3.org/2000/svg" version="1.1"> 
+<svg height="10" width="10" xmlns="http://www.w3.org/2000/svg" version="1.1"> 
+  <defs> 
+    <pattern id="tstPosPat" width=".25" height=".25" patternContentUnits="objectBoundingBox">
+        <rect x="0" y="0" width=".25" height=".25" fill="#eeeeee"/>
+        <circle cx=".125" cy=".125" r=".05" fill="#999999"/>
+    </pattern>
+    <pattern id="tstPosPatLeg" width=".25" height=".25" patternContentUnits="objectBoundingBox">
+        <rect x="0" y="0" width=".25" height=".25" fill="#ffffff"/>
+        <circle cx=".125" cy=".125" r=".05" fill="#999999"/>
+    </pattern>
+    <pattern id="tstPosHivPosPat" width=".25" height=".25" patternContentUnits="objectBoundingBox">
+        <rect x="0" y="0" width=".25" height=".25" fill="#ffeda0"/>
+        <circle cx=".125" cy=".125" r=".05" fill="#999999"/>
+    </pattern>
+    <pattern id="tstPosHivNegPat" width=".25" height=".25" patternContentUnits="objectBoundingBox">
+        <rect x="0" y="0" width=".25" height=".25" fill="#c2e699"/>
+        <circle cx=".125" cy=".125" r=".05" fill="#999999"/>
+    </pattern>
+    <pattern id="tstNegPat" width="10" height="10" patternTransform="rotate(45 0 0)" patternUnits="userSpaceOnUse">
+        <rect x="0" y="0" width="10" height="10" fill="#eeeeee"/>
+        <line x1="0" y1="0" x2="0" y2="10" style="stroke:#999999; stroke-width:3" />
+    </pattern>
+    <pattern id="tstNegPatLeg" width="10" height="10" patternTransform="rotate(45 0 0)" patternUnits="userSpaceOnUse">
+        <rect x="0" y="0" width="10" height="10" fill="#ffffff"/>
+        <line x1="0" y1="0" x2="0" y2="10" style="stroke:#999999; stroke-width:3" />
+    </pattern>
+     <pattern id="tstNegHivPosPat" width="10" height="10" patternTransform="rotate(45 0 0)" patternUnits="userSpaceOnUse">
+        <rect x="0" y="0" width="10" height="10" fill="#ffeda0"/>
+        <line x1="0" y1="0" x2="0" y2="10" style="stroke:#999999; stroke-width:3" />
+    </pattern>
+     <pattern id="tstNegHivNegPat" width="10" height="10" patternTransform="rotate(45 0 0)" patternUnits="userSpaceOnUse">
+        <rect x="0" y="0" width="10" height="10" fill="#c2e699"/>
+        <line x1="0" y1="0" x2="0" y2="10" style="stroke:#999999; stroke-width:3" />
+    </pattern>
+  </defs>
+</svg>
+
+<div id="top">
+Below is a sample task to familiarize you with the visualization you will use in the next portion of the experiment. Please familiarize yourself with the visualization and answer the questions below to move on to the full experiment.</div> 
+
+<div id="simple-example" style="float:left; display:block;"></div>
+<div id="checkboxes" style="float:left; margin-top:10%; display:block;">
+<svg height="12" width="20" id="hivPosLeg"><rect fill="#ffeda0" stroke="black" width="20px" height="12px"/></svg>
+<input type="checkbox" id="hivPos" onclick="myFunction()">Checkbox 1<br>
+<svg height="12" width="20" id="tstPosLeg"><rect fill="url(#tstPosPatLeg)" stroke="black" width="20px" height="12px"/></svg>
+<input type="checkbox" id="tstPos" onclick="myFunction()">Checkbox 2<br>
+</div>
+
+<div id="answers" style="clear:both;"><input type="submit" value="I'm ready to see the question." onClick=showQ()></div>
+
+<script>
+var ansText =  '<p>Checkbox 1 highlights <input type="number" id="ans1"> points.<br>Chechbox 2 highlights <input type="number" id="ans2"> points.</p><p><input type="number" id="ans3"> points are highlighted by both Checkboxes 1 and 2</p><input type="submit" value="Submit" onClick=validate()>';
+ 
+//Called on load, starts experiment with first set of graphs
+function run() {
+         experimentr.hideNext(); 
+         experimentr.startTimer('prep'); 
+         draw(0);
+} 
+
+//set numbers for pos/neg
+// var backColor = "#DADADF";
+// var hivPosColor = "#F3E407";
+// var hivNegColor = "#2DD98C";
+// var tstPosColor = "#F81D0A";
+// var tstNegColor = "#888884"; 
+// var hivPosTstPosColor = "#F89A0A";
+// var hivPosTstNegColor = "#A0A04C"; 
+// var hivNegTstPosColor = "#6B3223";
+// var hivNegTstNegColor = "#627E72"; 
+
+var backColor = "#eeeeee";
+var hivPosColor = "#ffeda0";
+var hivNegColor = "#c2e699"; //#9ecae1";
+var tstPosColor = "url(#tstPosPat) #f03b20";
+var tstNegColor = "url(#tstNegPat) #eff3ff"; 
+var tstPosColorLeg = "url(#tstPosPatLeg) #f03b20";
+var tstNegColorLeg = "url(#tstNegPatLeg) #eff3ff"; 
+var hivPosTstPosColor = "url(#tstPosHivPosPat) #fd8d3c";
+var hivPosTstNegColor = "url(#tstNegHivPosPat) #addd8e"
+var hivNegTstPosColor = "url(#tstPosHivNegPat) #810f7c";
+var hivNegTstNegColor = "url(#tstNegHivNegPat) #6baed6";
+
+var numHivPos = 20;
+var numHivNeg = 90;
+var numTstPos = 10;
+var numTstNeg = 83; 
+var numHivPosTstPos = 8;
+var numHivPosTstNeg = 2;
+var numHivNegTstPos = 9;
+var numHivNegTstNeg = 81; 
+
+//new array layout function 
+var num_in_row = 10;  
+var layout = d3_iconarray.layout().width(num_in_row);
+//data to be passed to layout function 
+var data = d3.range(0, 100, 1);
+var num_in_col = data.length / num_in_row;
+//array of grid positions and data 
+var grid = layout(data);
+//console.log(grid); 
+
+//box length/height 
+b_len_width = 30; 
+
+//dims of svg that holds iconarray 
+var margin = {top:40, bottom:10, left:40, right:10 };
+var width = b_len_width * num_in_row + margin.left + margin.right;
+var height = b_len_width * num_in_col + margin.top + margin.bottom; 
+
+
+//can use scale to make gaps in iconarray for readability 
+    //gapSize = size between chunks
+var arrayScale = d3_iconarray.scale()
+    .domain([ 0, layout.maxDimension(data.length) ])
+    .range([0, width-(margin.left+margin.right)])
+    .gapSize(0);
+
+
+function myFunction() {
+    var hivPosChk = document.getElementById('hivPos').checked;
+    var tstPosChk = document.getElementById('tstPos').checked;
+
+    if(hivPosChk & !tstPosChk ) {
+        draw(1);
+    } else if(!hivPosChk & tstPosChk ) {
+        draw(4);
+    } else if (hivPosChk & tstPosChk ) {
+        draw(7)
+    } else {
+        draw(0); 
+    }  
+}
+
+function draw(caseNum) {
+
+    document.getElementById('checkboxes').style.marginLeft = width; 
+    document.getElementById('simple-example').innerHTML = "";
+
+    document.getElementById('hivPosLeg').fill = hivPosColor;
+    document.getElementById('tstPosLeg').fill = tstPosColorLeg;
+
+    //d3 to draw the iconarray 
+    var svg = d3.select('#simple-example')
+            .append('svg')
+                .attr('width',width)
+                .attr('height',height)
+            .append('g')
+                .attr('transform','translate('+margin.left+','+margin.top+')');
+
+    svg.selectAll('circle')
+        .data(grid)
+            .enter()
+        .append('rect')
+            .attr('x', function(d){ return arrayScale(d.position.x) })
+            .attr('y', function(d){ return arrayScale(d.position.y) })
+            .attr('width', b_len_width)
+            .attr('height', b_len_width)
+            .attr('fill', function(d) { if (caseNum == 0) {
+                                            return backColor; 
+                                        } else if (caseNum == 1) {
+                                            if (d.position.x < (numHivPos / num_in_row)) {
+                                                return hivPosColor; 
+                                            } else if ((d.position.x == numHivPos / num_in_row) & (d.position.y < (numHivPos % num_in_row))) {
+                                                return hivPosColor; 
+                                            } else {
+                                                return backColor; 
+                                            } 
+                                        } else if (caseNum == 4) {
+                                            if ((d.position.y < (numTstPos / num_in_row)) & (d.position.x < 5)) {
+                                                return tstPosColor; 
+                                            } else if ((d.position.x == 0) & (d.position.y < 6)) {
+                                                return tstPosColor; 
+                                            } else {
+                                                return backColor; 
+                                            } 
+                                        } else if (caseNum == 7) {
+                                            if (d.position.y == 0 & d.position.x > 1 & d.position.x < 5) {
+                                                return tstPosColor; 
+                                            } else if (d.position.x == 0 & d.position.y < 6) {
+                                                return hivPosTstPosColor; 
+                                             } else if (d.position.x == 1 & d.position.y < 1) {
+                                                return hivPosTstPosColor; 
+                                             } else if (d.position.x == 0 & d.position.y >= 6) {
+                                                return hivPosColor; 
+                                             } else if (d.position.x == 1 & d.position.y > 0) {
+                                                return hivPosColor; 
+                                             } else {
+                                                return backColor; 
+                                            } 
+                                        } 
+                                    })
+            .attr('stroke', "#000000");
+}
+
+ var answers = {}; 
+ function validate() {
+        var a1 = document.getElementById("ans1");
+        var a2 = document.getElementById("ans2");  
+        var a3 = document.getElementById("ans3"); 
+        if (a1.value == "" || a2.value == "" || a3.value == "") {
+                alert("Please fill in all blanks then submit your answer.");
+        } else {
+                if (a1.value != 20) {
+                        alert("Not quite, please try the first question again.");
+                } else if (a2.value != 10) {
+                        alert("Not quite, please try the second question again."); 
+                } else if (a3.value != 7) {
+                        alert("Not quite, please try the third question again.")
+                } else { 
+                        alert("Great! Next you will see the experiment."); 
+                        experimentr.endTimer('prep'); 
+                        experimentr.next();
+                }
+        } 
+
+ }
+
+function showQ() {
+        document.getElementById("answers").innerHTML = ansText; 
+}
+ 
+//Call run on window load 
+window.onload = run();
+  
+ </script>             

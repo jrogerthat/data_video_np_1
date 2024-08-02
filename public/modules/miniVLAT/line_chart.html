@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Line Chart</title>
+</head>
+
+<body>
+
+<div id= "VLAT_line_chart_timer"> </div>
+<div id="line_chart">
+  <div class="flex_vlat">
+  <div>
+    <img src = "modules/img/VLAT/line_chart.png" alt="line_chart" width="700px"/>
+  </div>
+
+  <div id="line_chart_question"><strong>What was the price of a barrel of oil in February 2020?</strong>
+    <div id="lc_answers">
+          <!-- answer = 48 -->
+      <ul>
+        <li><input type="radio" id="a1" name="line_chart_question" value="50.54">50.54</li>
+        <li><input type="radio" id="a2" name="line_chart_question" value="47.02">47.02</li>
+        <li><input type="radio" id="a3" name="line_chart_question" value="42.34">42.34</li>
+        <li> <input type="radio" id="a4" name="line_chart_question" value="43.48">43.48</li>
+        <li> <input type="radio" id="a5" name="line_chart_question" value="Skip">Skip</li>
+      </ul>
+    </div>
+  </div>
+</div>
+</div>
+
+<style>
+ 
+</style>
+
+<script> 
+(function() {
+  var data = {};
+  var answers = {};
+  
+
+  init();
+  
+  function init(){
+
+	data.line_chart_question = null;
+
+    //start timer
+  	experimentr.attachTimer('#VLAT_line_chart_timer', 25, function(){
+  	  if(experimentr.get_current() == 'modules/miniVLAT/line_chart.html'){
+    		experimentr.endTimer('VLAT_line_chart_timer');
+    		
+    		experimentr.addData(data);
+    		experimentr.next();
+    	}
+  	});
+
+	d3.selectAll('input')
+	.on('change', function() { data.line_chart_question = this.value; });
+  	
+  	//overrides onNext from experimentr
+    d3.select('#next-button')
+      .on('click', function(){
+        experimentr.endTimer('VLAT_line_chart_timer');
+        experimentr.addData(data);
+        experimentr.next();
+    });
+    
+    experimentr.startTimer('VLAT_line_chart_timer');
+    experimentr.release();
+   
+  }
+}());
+</script>
+</body>
+</html>

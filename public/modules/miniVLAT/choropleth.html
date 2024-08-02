@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Choropleth</title>
+</head>
+
+<body>
+
+<div id= "VLAT_choropleth_timer"> </div>
+<div id="choropleth">
+  <div class="flex_vlat">
+    <div>
+      <img src = "modules/img/VLAT/choropleth_map.png" alt="choropleth" width="700px"/>
+    </div>
+    <div id="choropleth_question"><strong>In 2020, the unemployment rate for Washington (WA) was higher than that of Wisconsin (WI).</strong>
+      <div id="c_answers">
+            <!-- answer = 30-40 -->
+            <ul>
+              <li><input type="radio" id="a1" name="choropleth" value="true"> true</li>
+              <li><input type="radio" id="a2" name="choropleth" value="false"> false</li>
+              <li><input type="radio" id="a3" name="choropleth" value="Skip"> Skip</li>
+            </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+ 
+</style>
+
+<script> 
+(function() {
+  var data = {};
+  var answers = {};
+  
+
+  init();
+  
+  function init(){
+
+	data.choropleth_question = null;
+
+    //start timer
+  	experimentr.attachTimer('#VLAT_choropleth_timer', 25, function(){
+  	  if(experimentr.get_current() == 'modules/miniVLAT/choropleth.html'){
+    		experimentr.endTimer('VLAT_choropleth_timer');
+    		
+    		experimentr.addData(data);
+    		experimentr.next();
+    	}
+  	});
+
+	d3.selectAll('input')
+	.on('change', function() { data.choropleth_question = this.value; });
+  	
+  	//overrides onNext from experimentr
+    d3.select('#next-button')
+      .on('click', function(){
+        experimentr.endTimer('VLAT_choropleth_timer');
+        experimentr.addData(data);
+        experimentr.next();
+    });
+    
+    experimentr.startTimer('VLAT_choropleth_timer');
+    experimentr.release();
+   
+  }
+}());
+</script>
+</body>
+</html>

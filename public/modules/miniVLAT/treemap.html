@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Treemap</title>
+</head>
+
+<body>
+
+<div id= "VLAT_treemap_timer"> </div>
+<div id="treemap">
+  <div class="flex_vlat">
+    <div>
+      <img src = "modules/img/VLAT/treemap.png" alt="treemap" width="700px"/> <br />
+    </div>
+
+    <div id="treemap_question"><strong>eBay is nested in the Software category.</strong>
+      <div id="treemap_answers">
+        <ul>
+          <li> <input type="radio" id="a1" name="treemap_question" value="true">True</li>
+          <li><input type="radio" id="a2" name="treemap_question" value="false">False</li>
+          <li><input type="radio" id="a3" name="treemap_question" value="Skip">Skip</li>
+        </ul>
+    
+      </div>
+    </div>
+
+</div>
+</div>
+
+<style>
+ 
+</style>
+
+<script> 
+(function() {
+  var data = {};
+  var answers = {};
+  
+
+  init();
+  
+  function init(){
+
+	data.treemap_question = null;
+
+    //start timer
+  	experimentr.attachTimer('#VLAT_treemap_timer', 25, function(){
+  	  if(experimentr.get_current() == 'modules/miniVLAT/treemap.html'){
+    		experimentr.endTimer('VLAT_treemap_timer');
+    		
+    		experimentr.addData(data);
+    		experimentr.next();
+    	}
+  	});
+
+	d3.selectAll('input')
+	.on('change', function() { data.treemap_question = this.value; });
+  	
+  	//overrides onNext from experimentr
+    d3.select('#next-button')
+      .on('click', function(){
+        experimentr.endTimer('VLAT_treemap_timer');
+        experimentr.addData(data);
+        experimentr.next();
+    });
+    
+    experimentr.startTimer('VLAT_treemap_timer');
+    experimentr.release();
+   
+  }
+}());
+</script>
+</body>
+</html>

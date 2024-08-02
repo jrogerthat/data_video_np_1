@@ -1,0 +1,70 @@
+<div id="audio_check">
+
+    <h2 id="header_test">This test requires audio. If you can't hear this, please turn on your audio before you start.</h2>
+    <div id="wrap_audio">
+    <audio controls>
+        <source src="modules/audio_check/audio_test_lyrics.m4a">
+    </audio>
+    
+
+    <div id="task1_q7">
+        <span class="question header">What words do you hear in this audio clip?</span>
+         <br>
+         <ul>
+          <li><input type="radio" name="audio" class="audio" value=false>"Ooh-ooh, I heard it through the grapevine and I'm just about to lose my mind."</li>
+          <li><input type="radio" name="audio" class="audio" value=false>"Jaws was never my scene and I don't like Star Wars"</li>
+          <li><input type="radio" name="audio" class="audio" value="never">"Never gonna give you up, never gonna let you down"</li>
+          <li><input type="radio" name="audio" class="audio" value=false>"They say time takes its toll on a body, makes the young girls brown hair turn gray"</li>
+          <li><input type="radio" name="audio" class="audio" value=false>"I've been too long, I'm glad to be back"</li>
+         </ul>
+       </div>
+    </div> 
+</div>
+<script>
+    (function() {
+    
+        var userId  = null
+        var data    = {};
+
+        let turnOff = false;
+        let fail = false
+
+        let chances = 1;
+
+
+        d3.selectAll('input.audio')
+        .on('change', function() { 
+            if(this.value === "never"){
+
+                console.log('THIS IS TRUE', this.value)
+                experimentr.release()
+            }else{
+                if(chances === 1){
+                    document.getElementById('header_test').innerHTML = "Sorry! That was the wrong lyric. You get another chance."
+                    chances = 0
+                }else{
+                    console.log('false', this.value)
+                    experimentr.hideNext();
+                    document.getElementById('header_test').innerHTML = "Sorry, you are not eligable for this test. Please return to Prolific."
+                    d3.select('#wrap_audio').remove();
+                }
+                
+
+            }
+        });
+
+        if(fail === false){
+            d3.select()
+        }
+
+       
+
+       
+    
+  
+    }());
+    </script>
+    
+   
+    
+   

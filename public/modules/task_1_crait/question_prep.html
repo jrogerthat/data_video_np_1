@@ -1,0 +1,44 @@
+<div id="task_1_question_prep">
+    <h2>Task 1 Question Prep</h2>
+    
+    <p>On the next page, you will see <span id="condition_instruction_task_1"></span> for overnight stays in the fictional Crait National Park with instructions on how to read the visualization. After this stimulus, you will answer questions without the visualization.
+    
+        <h3>To answer the questions, you should learn the following before you leave the next page:</h3>
+        <ul>
+          <li>How are color, shape, size, and position used in the visualization?</li>
+          <li>How are time frames represented?</li>
+          <li>What factors might influence the number of nights visitors spend in the park or the type of accommodation chosen?</li>
+          <li>How could environmental factors, like average temperature, impact visitation patterns or accommodation choices in the national park?</li>
+          <li>What highs and lows do you notice in the visualization?</li>
+          <li>Example Questions include: <em>"Which month appears to have the highest overall visitation regardless of accommodation type?"</em></li>
+          <!-- <li>How does the visualization facilitate comparisons between different data categories, such as types of accommodation or visitor numbers across seasons?</li> -->
+        </ul>
+        
+   
+    </div>
+    
+    <style>
+      #task_1_question_prep {
+        width: 70%;
+        margin: auto;
+      }
+    </style>
+    
+    <script> 
+    (function() {
+    
+      d3.select('#condition_instruction_task_1').node().innerHTML = (experimentr.condition() === 1) ? `a data video`: `a visualization`;
+    //   d3.select('#condition_instruction_task_1_B').node().innerHTML = (experimentr.condition() === 1) ? `watch the data video. You can play the video back multiple times.`: `study the visualization with the breakdown`;
+      
+    experimentr.startTimer('task_1_q_prep_timer');
+
+    experimentr.release();
+
+    d3.select('#next-button')
+        .on('click', function(){
+        experimentr.endTimer('task_1_q_prep_timer');
+        experimentr.next()
+        });
+    
+    }());
+</script>

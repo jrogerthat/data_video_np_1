@@ -1,0 +1,41 @@
+<div id="directions">
+
+<h2>Reasoning Study</h2>
+
+<p>
+
+Thank you for your answers! <br><br> Next, you will be taken through 3 surveys:
+<ol>
+        <li>Demographic survey</li>
+        <li>Paper folding survey-- Part 1</li>
+        <li>Optional break</li>
+        <li>Paper folding survey-- Part 2</li> 
+        <li>Feedback and submit page</li>
+</ol>
+</p>
+
+<p style="clear:both;">
+After you have read the above instructions, click Start to begin the surveys. 
+<button id="start" type="button">Start</button>
+</p>
+</div>
+
+<style>
+        #images {
+                
+        }
+</style>
+
+<script>
+(function() {
+
+        init(); 
+
+        function init() {
+                experimentr.hideNext(); 
+
+                d3.select('#start').on('click', experimentr.next); 
+
+        }
+}())
+</script>

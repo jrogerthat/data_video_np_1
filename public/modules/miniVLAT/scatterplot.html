@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Scatterplot</title>
+</head>
+
+<body>
+
+<div id= "VLAT_scatterplot_timer"> </div>
+<div id="scatterplot">
+  <div class="flex_vlat">
+  <div><img src = "modules/img/VLAT/scatterplot.png" alt="scatterplot" width="700px"/></div>
+
+  <div id="scatterplot_question"><strong>There is a negative linear relationship between the height and the weight of the 85 males.</strong>
+    <div id="s_answers">
+          <!-- answer = false -->
+          <ul>
+            <li> <input type="radio" id="a1" name="scatterplot" value="true">True</li>
+            <li> <input type="radio" id="a2" name="scatterplot" value="false">False</li>
+            <li> <input type="radio" id="a3" name="scatterplot" value="Skip">Skip</li>
+          </ul>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<style>
+ 
+</style>
+
+<script> 
+(function() {
+  var data = {};
+  var answers = {};
+  
+
+  init();
+  
+  function init(){
+
+	data.scatterplot_question = null;
+
+    //start timer
+  	experimentr.attachTimer('#VLAT_scatterplot_timer', 25, function(){
+  	  if(experimentr.get_current() == 'modules/miniVLAT/scatterplot.html'){
+    		experimentr.endTimer('VLAT_scatterplot_timer');
+    		
+    		experimentr.addData(data);
+    		experimentr.next();
+    	}
+  	});
+
+	d3.selectAll('input')
+	.on('change', function() { data.scatterplot_question = this.value; });
+  	
+  	//overrides onNext from experimentr
+    d3.select('#next-button')
+      .on('click', function(){
+        experimentr.endTimer('VLAT_scatterplot_timer');
+        experimentr.addData(data);
+        experimentr.next();
+    });
+    
+    experimentr.startTimer('VLAT_scatterplot_timer');
+    experimentr.release();
+   
+  }
+}());
+</script>
+</body>
+</html>

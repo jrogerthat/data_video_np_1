@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+
+<meta charset="utf-8">
+<title>Data Videos Survey</title>
+
+<!-- Calls to /scripts are redirected to /node_modules/ on the server -->
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<!-- <script src="https://d3js.org/d3.v5.min.js"></script> -->
+<script src="experimentr.js"></script>
+<script src="d3-iconarray.js"></script> 
+
+<!-- <script src="puzzleimg/puzzleimg.js"></script>	
+<link rel="stylesheet" href="puzzleimg/puzzleimg.css" /> -->
+
+<link rel="stylesheet" type="text/css" href="css/style_svg_better.css">
+<link rel="stylesheet" type="text/css" href="css/main.css" />
+
+<body>
+<div id="did_refresh" style="display:flex; margin:auto; justify-content: center;"></div>
+</body>
+
+<script>
+
+if(experimentr.didRefresh()){
+      let h1 = d3.select("#did_refresh").append('h1');
+      h1.text("You have refreshed the page and are disqualified. Please return to Prolific.")
+}else{
+   experimentr.sequence([
+//     'modules/parallel_coordinates_may_run_v2/gate_check.html',
+    'modules/consent/',
+    'modules/audio_check/',
+    'modules/demographics/',
+    'modules/engagement/',
+    'modules/nasa-tlx/',
+    'modules/spatial/instructions-spatial.html',
+    'modules/spatial/spatial-first.html', 
+    'modules/spatial/spatial-second.html',
+    'modules/miniVLAT/instructions.html',
+    'modules/miniVLAT/area_chart.html',
+    'modules/miniVLAT/bubble_chart.html',
+    'modules/miniVLAT/choropleth.html',
+    'modules/miniVLAT/histogram.html',
+    'modules/miniVLAT/line_chart.html',
+    'modules/miniVLAT/bar_chart.html',
+    'modules/miniVLAT/pie_chart.html',
+    'modules/miniVLAT/scatterplot.html',
+    'modules/miniVLAT/stacked_bar_chart.html',
+    'modules/miniVLAT/stacked_area_chart.html',
+    'modules/miniVLAT/treemap.html',
+    'modules/miniVLAT/100_percent_stacked_bar_chart.html',
+    'modules/debrief/'
+]).start();
+}
+
+</script>
+

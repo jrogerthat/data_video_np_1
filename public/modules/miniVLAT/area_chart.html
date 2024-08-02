@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Area Chart</title>
+</head>
+
+<body>
+
+<div id= "VLAT_area_chart_timer"> </div>
+<div id="area_chart">
+<div class="flex_vlat">
+  <div>
+    <img src = "modules/img/VLAT/area_chart.png" alt="area_chart" width="700px"/>
+  </div>
+  <!-- <br /> -->
+  <div id="area_chart_question">
+    <strong>What was the average price of pound of coffee beans in October 2019?</strong>
+    <div id="ac_answers">
+          <!-- answer = $0.72 -->
+          <ul>
+            <li><input type="radio" id="a1" name="area_chart_question" value="$0.71"> $0.71</li>
+            <li><input type="radio" id="a2" name="area_chart_question" value="$0.90"> $0.90</li>
+            <li><input type="radio" id="a3" name="area_chart_question" value="$0.80"> $0.80</li>
+            <li><input type="radio" id="a4" name="area_chart_question" value="$0.63"> $0.63</li>
+            <li><input type="radio" id="a5" name="area_chart_question" value="Skip"> Skip</li>
+          </ul>
+    </div>
+  </div>
+</div>
+</div>
+
+<style>
+ 
+</style>
+
+<script> 
+(function() {
+  var data = {};
+  var answers = {};
+  
+
+  init();
+  
+  function init(){
+
+	data.area_chart_question = null;
+
+    //start timer
+  	experimentr.attachTimer('#VLAT_area_chart_timer', 25, function(){
+  	  if(experimentr.get_current() == 'modules/miniVLAT/area_chart.html'){
+    		experimentr.endTimer('VLAT_area_chart_timer');
+    		
+    		experimentr.addData(data);
+    		experimentr.next();
+    	}
+  	});
+
+	d3.selectAll('input')
+	.on('change', function() { data.area_chart_question = this.value; });
+  	
+  	//overrides onNext from experimentr
+    d3.select('#next-button')
+      .on('click', function(){
+        experimentr.endTimer('VLAT_area_chart_timer');
+        experimentr.addData(data);
+        experimentr.next();
+    });
+    
+    experimentr.startTimer('VLAT_area_chart_timer');
+    experimentr.release();
+   
+  }
+}());
+</script>
+</body>
+</html>
