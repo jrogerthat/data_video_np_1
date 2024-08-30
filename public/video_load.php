@@ -1,6 +1,6 @@
 <?php
 // Path to the video file
-$path = "modules/parallel_coordinates_may_run_v2/output2.mp4"; // Adjust the path to your video file accordingly
+$path = "modules/np_task/crait_vis.mov"; // Adjust the path to your video file accordingly
 
 // Ensure the file exists to avoid errors
 if (!file_exists($path)) {

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Task 1</title>
+</head>
+
+<body>
+	
+<defs>
+	<mask id="coldMask-grca">
+		<circle cx="130" cy="130" r="130" fill="white"></circle>
+		<path d="M-82.66715196657277,22.15059661002406C-90.22656829877832,7.623189136040629,-95.8494043659395,-9.775539834891509,-96.53221226476376,-25.86572831993312C-97.33167283194767,-44.704806242871165,-92.10873241698118,-66.67662258731109,-82.73149339882609,-82.73149339882605C-72.2912495356358,-100.6063461289006,-52.642301407252326,-118.31501685060363,-33.6464758633278,-125.57035741757885C-14.025793243485875,-133.0643583618555,12.718082960397885,-131.17810339480013,33.64647586332774,-125.57035741757886C54.57486876625753,-119.96261144035758,76.60323462854261,-107.24452847995967,91.92388155425115,-91.9238815542512C107.24452847995968,-76.60323462854264,119.96261144035759,-54.574868766257524,125.57035741757888,-33.646475863327694C131.17810339480016,-12.718082960397906,131.62452600859527,12.978802857146697,125.57035741757889,33.64647586332762C119.57996238983948,54.09643918197131,106.90441292120242,79.4835277941502,89.8172926019662,89.8172926019663C73.30450250594826,99.80372015588145,46.29304026484559,99.90512631125067,25.795631495217908,96.27060735347715C9.790139427617252,93.43257719064087,-5.728513696343063,84.64082080663715,-20.67856329100343,77.17344882955369C-32.984107051223994,71.02697606663622,-46.308975475850815,65.3798054437966,-56.49488553855017,56.49488553855023C-67.12976903723734,47.218337099988666,-76.13596598221153,34.701988928364926,-82.66715196657277,22.15059661002406" transform="translate(130, 130)" style="fill: black;"></path>
+	</mask>
+	<mask id="hotMask-grca">
+		<circle cx="130" cy="130" r="130" fill="white"></circle>
+		<path d="M-125.57035741757888,33.64647586332768C-131.1781033948001,12.718082960397886,-131.17810339480016,-12.71808296039785,-125.57035741757889,-33.64647586332764C-119.96261144035762,-54.57486876625746,-107.24452847995971,-76.60323462854262,-91.9238815542512,-91.92388155425115C-76.60323462854268,-107.24452847995967,-54.574868766257595,-119.96261144035756,-33.6464758633278,-125.57035741757885C-12.71808296039795,-131.17810339480016,12.718082960397885,-131.17810339480013,33.64647586332774,-125.57035741757886C54.57486876625753,-119.96261144035758,76.60323462854261,-107.24452847995967,91.92388155425115,-91.9238815542512C107.24452847995968,-76.60323462854264,119.96261144035759,-54.574868766257524,125.57035741757888,-33.646475863327694C131.17810339480016,-12.718082960397906,131.1781033948002,12.718082960397831,125.57035741757889,33.64647586332762C119.9626114403576,54.57486876625749,107.24452847995967,76.60323462854267,91.92388155425112,91.92388155425122C76.60323462854261,107.24452847995974,54.57486876625749,119.96261144035758,33.6464758633277,125.57035741757888C12.71808296039791,131.17810339480013,-12.718082960397828,131.1781033948002,-33.646475863327616,125.57035741757889C-54.57486876625744,119.96261144035762,-76.60323462854258,107.24452847995974,-91.92388155425112,91.92388155425122C-107.2445284799597,76.6032346285427,-119.96261144035758,54.57486876625752,-125.57035741757888,33.64647586332768" transform="translate(130, 130)" style="fill: black;"></path>
+	</mask>
+	<marker id="arrow" markerWidth="10" markerHeight="10" refX="0" refY="3" orient="auto" markerUnits="strokeWidth">
+		<path fill="#cac5c2" d="M0,0 L0,6 L9,3 z"></path>
+	</marker>
+</defs>
+<div id= "static_task_2_timer"> </div>
+<div class="flex_layout">
+<div id="static_task_1">
+	<div class="chart-wrapper">
+		<object data="modules/task_2_jellystone/jellystone_vis.svg" width="auto" height="460"> </object>
+	</div>
+</div>
+<div class="instructions">
+	<p>Jellystone is one of the busiest national parks in Tasmania. If you're planning a trip to Jellystone and prefer <span class="tent">tent camping</span>, the most popular time to visit is between February and March, when the average nightly temperature is between 32°F (above freezing) and 70°F. The park experiences its highest tent camping activity during this time, with approximately 140,000 nights spent in campgrounds at its peak. You'll notice that <span class="rv">RV camping</span> nights remain well below that of campgrounds and lodges. That is because out of the 12 campgrounds in the park, only one has RV hookups available. Those brave enough to explore the Tasmanian backcountry will likely have a night under the stars to themselves. <span class="backcountry">Backcountry camping</span> is the least utilized, not quite reaching 5,000 nights at its peak of the season. </p>
+
+	<p>Jellystone has average temperatures that dip <span class="white">below freezing</span> for a staggering 9 months. Though the park is open year-round, most roads and facilities close from May to December, limiting access to those of us who are not traveling by snowmobile or skis. We can see this in the visualization, with <span class="lodging">lodging</span> being the only accommodation used during that time. You will notice a small bump in overnight stays in August when people stay in the park to cross-country ski and snowshoe.
+	</p>
+
+	<h4>Before you leave this page you should be able to:</h4>
+	<P>
+		<ul>
+		<li>Give travel recommendations to colleagues, one colleague is sensitive to temperature and will want recommendations for when to travel based on average temps.</li>
+		<li>Plan your trip considering what type of accommodation is more popular, and when.</li>
+	</ul> 
+	</P>
+
+</div>
+
+</div>
+<style>
+		.backcountry {
+		background-color: #d27f3c;
+		padding: 3px;
+		padding-left:5px;
+		padding-right: 5px;
+	}
+	.lodging {
+		background-color: #efc13a;
+		padding: 3px;
+		padding-left:5px;
+		padding-right: 5px;
+	}
+	.tent{
+		background-color: #7cb342;
+		padding: 3px;
+		padding-left:5px;
+		padding-right: 5px;
+		
+	}
+	.rv{
+		background-color: #00897b;
+		padding: 3px;
+		padding-left:5px;
+		padding-right: 5px;
+	}
+	.white{
+		background-color: #fff;
+		padding: 3px;
+		padding-left:5px;
+		padding-right: 5px;
+	}
+	.red{
+		background-color: rgba(255, 75, 0, 0.3);
+		padding: 3px;
+		padding-left:5px;
+		padding-right: 5px;
+	}
+
+	.instructions {
+		padding-left: 20px;
+		padding-top: 35px;
+		align-items: center;
+		color: #948b87;
+		/* width: 2000px; */
+	}
+	.flex_layout {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-around;
+		width:80%;
+		margin: auto;
+	}
+
+	.chart-wrapper {
+		display:flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.chart-wrapper .chart .month-label {
+		font-size: 10px;
+		fill: #a5a09d;
+	}
+
+	.chart-wrapper .chart text {
+		font-family: Open Sans,sans-serif;
+		fill: #63544e;
+		text-anchor: middle;
+	}
+	
+	.chart-wrapper .chart .park-name {
+		font-family: Rasa,sans-serif;
+		font-size: 20px;
+		font-weight: 500;
+	}
+
+	.chart-wrapper .chart .park-state {
+		fill: #948b87;
+		font-size: 13px;
+	}
+
+
+	body{
+		--body-color: #948b87;
+		--title-color: #63544e;
+		--background-color: #f5eeeb;
+		--footer-color: #e7deda;
+		--lodging-color: #efc13a;
+		--tent-color: #7cb342;
+		--rv-color: #00897b;
+		--backcountry-color: #d27f3c;
+		font-size: 16px;
+		line-height: 26px;
+		color: var(--body-color);
+		background-color: var(--background-color);
+		font-family: Open Sans,sans-serif;
+	}
+ 
+</style>
+
+<script> 
+(function() {
+  var data = {};
+  var answers = {};
+  
+  init();
+  
+  function init(){
+
+	data.static_task_1 = null;
+    //start timer
+  	experimentr.attachTimer('#static_task_2_timer', 180, function(){
+  	  if(experimentr.get_current() == 'modules/task_1/static_task_1_vis.html'){ 
+    		experimentr.endTimer('static_task_1');
+    		
+    		experimentr.addData(data);
+    		experimentr.next();
+    	}
+  	});
+
+	d3.selectAll('input')
+	.on('change', function() { data.static_task_1 = this.value; });
+  	
+  	//overrides onNext from experimentr
+    // d3.select('#next-button')
+    //   .on('click', function(){
+      	
+    //     experimentr.addData(data);
+    //     experimentr.next();
+    // });
+	d3.select('#next-button')
+      .on('click', function(){
+		if(confirm("Are you sure you want to move on to the questions? \nYou won't be able to go back.")){
+			console.log('PRESSED YES');
+			experimentr.addData(data);
+        	experimentr.next();
+		}
+    });
+    
+    experimentr.startTimer('static_task_1');
+    experimentr.release();
+   
+  }
+  
+}());
+</script>
+</body>
+</html>

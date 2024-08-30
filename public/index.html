@@ -26,10 +26,12 @@ if(experimentr.didRefresh()){
       h1.text("You have refreshed the page and are disqualified. Please return to Prolific.")
 }else{
    experimentr.sequence([
-//     'modules/parallel_coordinates_may_run_v2/gate_check.html',
     'modules/consent/',
     'modules/audio_check/',
     'modules/demographics/',
+    'modules/np_task/instructions_task.html',
+    'modules/np_task/stimulus.html',
+    'modules/np_task/task_questions.html',
     'modules/engagement/',
     'modules/nasa-tlx/',
     'modules/spatial/instructions-spatial.html',
